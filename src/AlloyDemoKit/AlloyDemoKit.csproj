@@ -66,6 +66,10 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPi.CmsLocalizationProvider, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPi.CmsLocalizationProvider.1.0.0.0\lib\net461\EPi.CmsLocalizationProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EPiServer, Version=9.5.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EPiServer.CMS.Core.9.5.0\lib\net45\EPiServer.dll</HintPath>
