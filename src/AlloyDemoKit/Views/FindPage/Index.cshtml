@@ -24,7 +24,7 @@
                     if (data.hits != undefined && data.hits[0] != undefined) {
                         var suggestion = data.hits[0].suggestion;
                         if (suggestion != undefined) {
-                            document.getElementById("suggestion").innerHTML = "<span style=\"color: red;\">@Html.Translate("/searchpagetemplate/suggestion")</span>" + ": <i><a href=\"/search/?q=" + suggestion + "\">" + suggestion + "</a></i>";
+                            document.getElementById("suggestion").innerHTML = "<span style=\"color: red;\">@Html.Translate("/alloy/searchpagetemplate/suggestion")</span>" + ": <i><a href=\"/search/?q=" + suggestion + "\">" + suggestion + "</a></i>";
                         }
                     }
                 }
@@ -51,7 +51,7 @@
                         }
                         if (list.length > 0)
                             document.getElementById("suggestion").innerHTML =
-                              "<span style=\"color: red;\">@Html.Translate("/searchpagetemplate/peoplealsosearchedfor")</span>" + ": " + list.join(" ");
+                              "<span style=\"color: red;\">@Html.Translate("/alloy/searchpagetemplate/peoplealsosearchedfor")</span>" + ": " + list.join(" ");
                         if (listStats.length > 0)
                             document.getElementById("suggestion2").innerHTML =
                             "<span style=\"color: red;\">People also searched for:</span> " + listStats.join(" ");
@@ -92,7 +92,7 @@
         <div class="input-group">
             <input id="srchTxt" type="text" class="form-control" tabindex="1" name="q" style="width:75%;" value="@Model.Query">
             <span class="input-group-btn">
-                <input type="submit" tabindex="2" class="btn" style="width: 200px" value="@Html.Translate("/searchpagetemplate/searchbutton")" />
+                <input type="submit" tabindex="2" class="btn" style="width: 200px" value="@Html.Translate("/alloy/searchpagetemplate/searchbutton")" />
             </span>
         </div><!-- /input-group -->
     }
@@ -107,26 +107,26 @@
         {
             @*<div class="row">*@
             <div class="span8 grayHead">
-                <h2>@Html.Translate("/searchpagetemplate/result")</h2>
+                <h2>@Html.Translate("/alloy/searchpagetemplate/result")</h2>
                 <p>
-                    @Html.Translate("/searchpagetemplate/searchfor") <i>@Model.Query</i>
-                    @Html.Translate("/searchpagetemplate/resultedin")
+                    @Html.Translate("/alloy/searchpagetemplate/searchfor") <i>@Model.Query</i>
+                    @Html.Translate("/alloy/searchpagetemplate/resultedin")
                     @if (Model.NumberOfHits > 0)
                     {
                         @Model.NumberOfHits
                         @Html.Raw(" ")
-                        @Html.Translate("/searchpagetemplate/hits")
+                        @Html.Translate("/alloy/searchpagetemplate/hits")
                     }
                     else
                     {
-                        @Html.Translate("/searchpagetemplate/zero")
+                        @Html.Translate("/alloy/searchpagetemplate/zero")
 
                         <script type="text/javascript">spellcheck("@Model.Query", @Model.NumberOfHits);</script>
                     }
 
                     <script type="text/javascript">relatedQuery("@Model.Query", @Model.NumberOfHits);</script>
 
-                    @*@Html.Translate("/searchpagetemplate/hits")*@
+                    @*@Html.Translate("/alloy/searchpagetemplate/hits")*@
 
                     <div id="suggestion"></div>
                     <div id="suggestion2"></div>

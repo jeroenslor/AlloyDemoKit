@@ -4,11 +4,11 @@
 @if(Model != null) 
 {
     @Model.PageName<br />
-    @Html.Translate("/contact/phone")@: : @Model.Phone<br />
-    @Html.Translate("/contact/email")@: : @Html.DisplayFor(m => m.Email)
+    @Html.Translate("/alloy/contact/phone")@: : @Model.Phone<br />
+    @Html.Translate("/alloy/contact/email")@: : @Html.DisplayFor(m => m.Email)
 } 
 else
 {
-    @Html.Translate("/contact/noneselected")  
+    @Html.Translate("/alloy/contact/noneselected")  
 }
 </p>

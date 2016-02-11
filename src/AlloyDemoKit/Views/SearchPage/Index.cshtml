@@ -13,7 +13,7 @@
         @using(Html.BeginForm(null, null, Model.Layout.SearchPageRouteValues, PageEditing.PageIsInEditMode ? FormMethod.Post : FormMethod.Get))
         {
             <input type="text" tabindex="1" name="q" value="@Model.SearchedQuery"/>
-            <input type="submit" tabindex="2" class="btn" value="@Html.Translate("/searchpagetemplate/searchbutton")" disabled="@(Model.SearchServiceDisabled ? "disabled" : null)"/>
+            <input type="submit" tabindex="2" class="btn" value="@Html.Translate("/alloy/searchpagetemplate/searchbutton")" disabled="@(Model.SearchServiceDisabled ? "disabled" : null)"/>
         }
     </div>
 </div>
@@ -22,19 +22,19 @@
 {
     <div class="row">
         <div class="span8 grayHead">
-            <h2>@Html.Translate("/searchpagetemplate/result")</h2>
+            <h2>@Html.Translate("/alloy/searchpagetemplate/result")</h2>
             <p>
-                @Html.Translate("/searchpagetemplate/searchfor") <i>@Model.SearchedQuery</i> 
-                @Html.Translate("/searchpagetemplate/resultedin")
+                @Html.Translate("/alloy/searchpagetemplate/searchfor") <i>@Model.SearchedQuery</i> 
+                @Html.Translate("/alloy/searchpagetemplate/resultedin")
                 @if(Model.NumberOfHits > 0)
                 {
                     @Model.NumberOfHits
                 }
                 else
                 {
-                    @Html.Translate("/searchpagetemplate/zero")
+                    @Html.Translate("/alloy/searchpagetemplate/zero")
                 }
-                @Html.Translate("/searchpagetemplate/hits")
+                @Html.Translate("/alloy/searchpagetemplate/hits")
             </p>
         </div>
     </div>
@@ -56,5 +56,5 @@
 
 @if(Model.SearchServiceDisabled && PrincipalInfo.HasEditAccess)
 {
-    @Html.Partial("TemplateHint", Html.Translate("/searchpagetemplate/disabled" ))
+    @Html.Partial("TemplateHint", Html.Translate("/alloy/searchpagetemplate/disabled" ))
 }

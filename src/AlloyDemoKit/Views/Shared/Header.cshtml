@@ -34,7 +34,7 @@
                                       query string values not in the form we can't use that in edit mode.*@
                                     @using(Html.BeginForm(null, null, Model.Layout.SearchPageRouteValues, PageEditing.PageIsInEditMode ? FormMethod.Post : FormMethod.Get))
                                     {
-                                        <input type="text" class="search-query" name="q" id="SearchKeywords" placeholder="@Html.Translate("/mainnavigation/search")"/>
+                                        <input type="text" class="search-query" name="q" id="SearchKeywords" placeholder="@Html.Translate("/alloy/mainnavigation/search")"/>
                                         <input type="submit" class="searchButton" id="SearchButton" value=""/>
                                     }
                                 </div>
