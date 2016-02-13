@@ -6,6 +6,7 @@ using AlloyDemoKit.Models.Blocks;
 using AlloyDemoKit.Models.Pages;
 using EPiServer.Web;
 using EPiServer.Web.Mvc;
+using EPi.Cms.ContainerPages;
 
 namespace AlloyDemoKit.Business.Rendering
 {

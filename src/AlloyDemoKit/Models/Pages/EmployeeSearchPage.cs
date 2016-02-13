@@ -1,10 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using EPiServer.Core;
-using EPiServer.DataAbstraction;
-using EPiServer.DataAnnotations;
-using EPiServer.SpecializedProperties;
-using AlloyDemoKit.Business.Rendering;
+﻿using EPi.Cms.ContainerPages;
 
 namespace AlloyDemoKit.Models.Pages
 {

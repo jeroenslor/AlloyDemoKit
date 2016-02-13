@@ -1,4 +1,4 @@
-using AlloyDemoKit.Business.Rendering;
+using EPi.Cms.ContainerPages;
 
 namespace AlloyDemoKit.Models.Pages
 {

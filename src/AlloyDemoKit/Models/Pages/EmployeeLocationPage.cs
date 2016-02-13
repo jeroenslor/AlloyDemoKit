@@ -1,10 +1,4 @@
-﻿using AlloyDemoKit.Business.Rendering;
-using EPiServer.Core;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using EPi.Cms.ContainerPages;
 
 namespace AlloyDemoKit.Models.Pages
 {

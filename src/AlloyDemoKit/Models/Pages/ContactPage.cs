@@ -1,9 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using AlloyDemoKit.Business;
-using AlloyDemoKit.Business.EditorDescriptors;
-using AlloyDemoKit.Business.Rendering;
 using EPiServer.Web;
 using EPiServer.Core;
+using EPi.Cms.ContainerPages;
 
 namespace AlloyDemoKit.Models.Pages
 {
