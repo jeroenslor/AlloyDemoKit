@@ -3,6 +3,9 @@ using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using AlloyDemoKit.Models.Pages.Models.Blocks;
 using System.ComponentModel.DataAnnotations;
+using EPi.Cms.DateContainers.Model;
+using EPi.Cms.ContainerPages;
+
 namespace AlloyDemoKit.Models.Pages.Models.Pages
 {
     /// <summary>
@@ -16,7 +19,7 @@ namespace AlloyDemoKit.Models.Pages.Models.Pages
    Availability.Specific,
    Include = new[] { typeof(BlogListPage), typeof(BlogItemPage) })]  // Pages we can create under the start page...
  
-    public class BlogListPage : StandardPage
+    public class BlogListPage : StandardPage, IDateContainer
     {
 
         [Display(GroupName = SystemTabNames.Content)]

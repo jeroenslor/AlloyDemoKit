@@ -1,10 +1,10 @@
-﻿using EPiServer.Core;
+﻿using EPi.Cms.DateContainers.Extensions;
+using EPi.Cms.DateContainers.Model;
+using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Web;
 namespace AlloyDemoKit.Models.Pages.Models.Pages
 {
     /// <summary>
@@ -17,7 +17,7 @@ namespace AlloyDemoKit.Models.Pages.Models.Pages
     [AvailableContentTypes(
      Availability.Specific,
      Include = new[] { typeof(BlogListPage), typeof(BlogItemPage) })]  // Pages we can create under the start page...
-      public class BlogItemPage : StandardPage
+      public class BlogItemPage : StandardPage, IHasDateContainer
     {
         [Display(GroupName = SystemTabNames.Content)]
         public virtual string Author { get; set; }
@@ -25,5 +25,12 @@ namespace AlloyDemoKit.Models.Pages.Models.Pages
         [Display(GroupName = SystemTabNames.Content)]
         public virtual ContentArea RightContentArea { get; set; }
 
+        public IDateContainer ConstructDateContainer(ContentReference parent, string name, DateTime startPublish)
+        {
+            var dateContainer = this.ConstructDateContainerPage<BlogListPage>(parent, name, startPublish);
+            dateContainer.Heading = name;
+
+            return dateContainer;
+        }
     }
 }

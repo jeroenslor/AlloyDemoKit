@@ -70,6 +70,10 @@
       <HintPath>..\packages\EPi.Cms.ContainerPages.1.0.0.0\lib\net461\EPi.Cms.ContainerPages.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EPi.Cms.DateContainers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPi.Cms.DateContainers.1.0.0.0\lib\net461\EPi.Cms.DateContainers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EPi.CmsLocalizationProvider, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\EPi.CmsLocalizationProvider.1.0.0.0\lib\net461\EPi.CmsLocalizationProvider.dll</HintPath>
       <Private>True</Private>

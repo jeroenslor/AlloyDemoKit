@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using AlloyDemoKit.Models.Pages.Business;
 using EPiServer.DataAnnotations;
 using AlloyDemoKit.Business;
+using EPi.Cms.DateContainers.Model;
 
 namespace AlloyDemoKit.Models.Pages.Models.Pages
 {
@@ -19,7 +20,7 @@ namespace AlloyDemoKit.Models.Pages.Models.Pages
    Availability.Specific,
    Include = new[] { typeof(BlogListPage), typeof(BlogItemPage) })]  // Pages we can create under the start page...
  
-    public class BlogStartPage : StandardPage
+    public class BlogStartPage : StandardPage, IDateContainerRoot
     {
         [Display(GroupName = SystemTabNames.Content)]
         public virtual string Heading { get; set; }
