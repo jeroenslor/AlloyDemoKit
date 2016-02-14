@@ -18,7 +18,7 @@ namespace AlloyDemoKit.Models.Pages
         Availability.Specific,
         Include = new[] { typeof(ContainerPage), typeof(ProductPage), typeof(StandardPage), typeof(SearchPage), typeof(LandingPage), typeof(ContentFolder), typeof(FindPage) }, // Pages we can create under the start page...
         ExcludeOn = new[] { typeof(ProductPage), typeof(StandardPage), typeof(SearchPage), typeof(LandingPage) })] // ...and underneath those we can't create additional start pages
-    public class StartPage : SitePageData
+    public class StartPage : SitePageData, IAlloySiteSettings
     {
         [Display(
             GroupName = SystemTabNames.Content,

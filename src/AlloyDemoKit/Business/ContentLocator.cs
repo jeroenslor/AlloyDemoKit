@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
 using System.Linq;
+using AlloyDemoKit.Helpers;
 using AlloyDemoKit.Models.Pages;
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.Filters;
-using EPiServer.Web;
+using EPi.Cms.SiteSettings;
 
 namespace AlloyDemoKit.Business
 {
@@ -16,12 +17,14 @@ namespace AlloyDemoKit.Business
         private readonly IContentLoader _contentLoader;
         private readonly IContentProviderManager _providerManager;
         private readonly IPageCriteriaQueryService _pageCriteriaQueryService;
+        private ISiteSettingsRepository _siteSettingsRepository;
 
-        public ContentLocator(IContentLoader contentLoader, IContentProviderManager providerManager, IPageCriteriaQueryService pageCriteriaQueryService)
+        public ContentLocator(IContentLoader contentLoader, IContentProviderManager providerManager, IPageCriteriaQueryService pageCriteriaQueryService, ISiteSettingsRepository siteSettingsRepository)
         {
             _contentLoader = contentLoader;
             _providerManager = providerManager;
             _pageCriteriaQueryService = pageCriteriaQueryService;
+            _siteSettingsRepository = siteSettingsRepository;
         }
 
         public virtual IEnumerable<T> GetAll<T>(ContentReference rootLink)
@@ -101,7 +104,7 @@ namespace AlloyDemoKit.Business
         /// <returns></returns>
         public IEnumerable<ContactPage> GetContactPages()
         {
-            var contactsRootPageLink = _contentLoader.Get<StartPage>(SiteDefinition.Current.StartPage).ContactsPageLink;
+            var contactsRootPageLink = _siteSettingsRepository.Get().ContactsPageLink;
 
             if (ContentReference.IsNullOrEmpty(contactsRootPageLink))
             {

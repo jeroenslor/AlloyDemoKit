@@ -1,10 +1,11 @@
 ﻿using AlloyDemoKit.Models.Pages;
+using EPi.Cms.SiteSettings;
 using EPiServer;
 using EPiServer.Core;
+using AlloyDemoKit.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace AlloyDemoKit.Business.Employee
 {
@@ -14,11 +15,14 @@ namespace AlloyDemoKit.Business.Employee
     public class EmployeeContainerLookup
     {
         private IContentRepository _contentRepository;
+        private ISiteSettingsRepository _siteSettingsRepository;
+
         private Dictionary<string, int> AlphabeticalLookups { get; set; }
 
-        public EmployeeContainerLookup(IContentRepository repo)
+        public EmployeeContainerLookup(IContentRepository repo, ISiteSettingsRepository siteSettingsRepository)
         {
             _contentRepository = repo;
+            _siteSettingsRepository = siteSettingsRepository;
 
             AlphabeticalLookups = new Dictionary<string, int>(26);
             var allContainers = _contentRepository.GetChildren<ContainerPage>(EmployeeContainerRootPage).ToList();
@@ -93,7 +97,7 @@ namespace AlloyDemoKit.Business.Employee
         {
             get
             {
-                ContentReference pageReference = _contentRepository.Get<StartPage>(ContentReference.StartPage).EmployeeContainerPageLink;
+                ContentReference pageReference = _siteSettingsRepository.Get().EmployeeContainerPageLink;
                 return pageReference;
             }
         }
@@ -102,7 +106,7 @@ namespace AlloyDemoKit.Business.Employee
         {
             get
             {
-                ContentReference pageReference = _contentRepository.Get<StartPage>(ContentReference.StartPage).EmployeeLocationPageLink;
+                ContentReference pageReference = _siteSettingsRepository.Get().EmployeeLocationPageLink;
                 return pageReference;
             }
         }
@@ -111,7 +115,7 @@ namespace AlloyDemoKit.Business.Employee
         {
             get
             {
-                ContentReference pageReference = _contentRepository.Get<StartPage>(ContentReference.StartPage).EmployeeExpertiseLink;
+                ContentReference pageReference = _siteSettingsRepository.Get().EmployeeExpertiseLink;
                 return pageReference;
             }
         }

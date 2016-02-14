@@ -10,6 +10,7 @@ using EPiServer;
 using System.Web;
 using System.IO;
 using AlloyDemoKit.Business.DDS;
+using EPi.Cms.SiteSettings;
 
 namespace AlloyDemoKit.Business.Employee
 {
@@ -49,7 +50,8 @@ namespace AlloyDemoKit.Business.Employee
             //Add implementation
             IFileDataImporter fileImporter = ServiceLocator.Current.GetInstance<IFileDataImporter>();
             IContentRepository contentRepo = ServiceLocator.Current.GetInstance<IContentRepository>();
-            EmployeeContainerLookup lookup = new EmployeeContainerLookup(contentRepo);
+            ISiteSettingsRepository siteSettingsRepository = ServiceLocator.Current.GetInstance<ISiteSettingsRepository>();
+            EmployeeContainerLookup lookup = new EmployeeContainerLookup(contentRepo, siteSettingsRepository);
            
 
             if (fileImporter.ImportFileExists(_locationDataFile))

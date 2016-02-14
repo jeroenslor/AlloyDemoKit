@@ -1,9 +1,11 @@
 ﻿using EPiServer.ServiceLocation;
 using EPiServer.Shell.ContentQuery;
 using EPiServer.Web;
+using AlloyDemoKit.Helpers;
 using AlloyDemoKit.Models.Pages;
 using PowerSlice;
 using System.Collections.Generic;
+using EPi.Cms.SiteSettings;
 
 namespace EPiServer.Templates.Alloy.Business.PowerSlice
 {
@@ -19,7 +21,7 @@ namespace EPiServer.Templates.Alloy.Business.PowerSlice
             get
             {
                 var contentType = ContentTypeRepository.Load(typeof(ArticlePage));
-                yield return new CreateOption(contentType.LocalizedName, EPiServer.DataFactory.Instance.Get<StartPage>(SiteDefinition.Current.StartPage).NewsPageLink, contentType.ID);
+                yield return new CreateOption(contentType.LocalizedName, ServiceLocator.Current.GetInstance<ISiteSettingsRepository>().Get().NewsPageLink, contentType.ID);
             }
         }
     }

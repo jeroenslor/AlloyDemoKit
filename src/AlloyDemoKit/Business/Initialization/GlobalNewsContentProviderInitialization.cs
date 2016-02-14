@@ -1,6 +1,7 @@
 using System;
 using System.Configuration;
 using System.Linq;
+using AlloyDemoKit.Helpers;
 using AlloyDemoKit.Business.ContentProviders;
 using AlloyDemoKit.Models.Pages;
 using EPiServer;
@@ -10,6 +11,7 @@ using EPiServer.Framework.Initialization;
 using EPiServer.Logging;
 using EPiServer.ServiceLocation;
 using EPiServer.Web;
+using EPi.Cms.SiteSettings;
 
 namespace AlloyDemoKit.Business.Initialization
 {
@@ -32,26 +34,31 @@ namespace AlloyDemoKit.Business.Initialization
 
             var providerManager = ServiceLocator.Current.GetInstance<IContentProviderManager>();
             var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
-            var startPages = contentLoader.GetChildren<PageData>(SiteDefinition.Current.RootPage).OfType<StartPage>();
+            var siteDefinitionRepository = ServiceLocator.Current.GetInstance<SiteDefinitionRepository>();
+            var siteSettingsRepository = ServiceLocator.Current.GetInstance<ISiteSettingsRepository>();
 
             // Attach content provider to each site's global news container
-            foreach (var startPage in startPages.Where(startPage => !ContentReference.IsNullOrEmpty(startPage.GlobalNewsPageLink)))
+            foreach (var site in siteDefinitionRepository.List())
             {
+                var siteSettings = siteSettingsRepository.Get(site);
+                if (ContentReference.IsNullOrEmpty(siteSettings.GlobalNewsPageLink))
+                    continue;
+
                 try
                 {
                     Logger.Debug("Attaching global news content provider to page {0} [{1}], global news will be retrieved from page {2} [{3}]",
-                        contentLoader.Get<PageData>(startPage.GlobalNewsPageLink).Name, 
-                        startPage.GlobalNewsPageLink.ID, 
+                        contentLoader.Get<PageData>(siteSettings.GlobalNewsPageLink).Name,
+                        siteSettings.GlobalNewsPageLink.ID, 
                         contentLoader.Get<PageData>(GlobalNewsContainer).PageName, 
                         GlobalNewsContainer.ID);
 
-                    var provider = new ClonedContentProvider(GlobalNewsContainer.ToPageReference(), startPage.GlobalNewsPageLink, startPage.Category);
+                    var provider = new ClonedContentProvider(GlobalNewsContainer.ToPageReference(), siteSettings.GlobalNewsPageLink, siteSettings.Category);
 
                     providerManager.ProviderMap.AddProvider(provider);
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error("Unable to create global news content provider for start page with ID {0}: {1}", startPage.PageLink.ID, ex.Message);
+                    Logger.Error("Unable to create global news content provider for site with name {0}: {1}", site.Name, ex.Message);
                 }
             }
 

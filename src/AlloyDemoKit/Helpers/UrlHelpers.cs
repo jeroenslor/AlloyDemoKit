@@ -6,7 +6,9 @@ using EPiServer.Globalization;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
 using EPiServer;
+using AlloyDemoKit.Helpers;
 using AlloyDemoKit.Models.Pages;
+using EPi.Cms.SiteSettings;
 
 namespace AlloyDemoKit.Helpers
 {
@@ -85,10 +87,10 @@ namespace AlloyDemoKit.Helpers
             {
                 lock (_syncObject)
                 {
-                    var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
                     var urlResolver = ServiceLocator.Current.GetInstance<UrlResolver>();
+                    var siteSettingsRepository = ServiceLocator.Current.GetInstance<ISiteSettingsRepository>();
 
-                    ContentReference locationRoot = contentLoader.Get<StartPage>(ContentReference.StartPage).EmployeeLocationPageLink;
+                    ContentReference locationRoot = siteSettingsRepository.Get().EmployeeLocationPageLink;
                     if (locationRoot != null)
                     {
                         _locationRootUrl = urlResolver.GetUrl(locationRoot);
@@ -118,10 +120,10 @@ namespace AlloyDemoKit.Helpers
             {
                 lock (_syncObject)
                 {
-                    var contentLoader = ServiceLocator.Current.GetInstance<IContentLoader>();
+                    var siteSettingsRepository = ServiceLocator.Current.GetInstance<ISiteSettingsRepository>();
                     var urlResolver = ServiceLocator.Current.GetInstance<UrlResolver>();
 
-                    ContentReference expertiseRoot = contentLoader.Get<StartPage>(ContentReference.StartPage).EmployeeExpertiseLink;
+                    ContentReference expertiseRoot = siteSettingsRepository.Get().EmployeeExpertiseLink;
                     if (expertiseRoot != null)
                     {
                         _expertiseRootUrl = urlResolver.GetUrl(expertiseRoot);

@@ -3,12 +3,12 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using AlloyDemoKit.Helpers;
-using AlloyDemoKit.Models.Pages;
 using AlloyDemoKit.Models.ViewModels;
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.Web;
 using EPiServer.Web.Routing;
+using EPi.Cms.SiteSettings;
 
 namespace AlloyDemoKit.Business
 {
@@ -16,32 +16,30 @@ namespace AlloyDemoKit.Business
     {
         private readonly IContentLoader _contentLoader;
         private readonly UrlResolver _urlResolver;
-        public PageViewContextFactory(IContentLoader contentLoader, UrlResolver urlResolver)
+        private readonly ISiteSettingsRepository _siteSettingsRepository;
+
+        public PageViewContextFactory(IContentLoader contentLoader, UrlResolver urlResolver, ISiteSettingsRepository siteSettingsRepository)
         {
             _contentLoader = contentLoader;
             _urlResolver = urlResolver;
+            _siteSettingsRepository = siteSettingsRepository;
         }
 
         public virtual LayoutModel CreateLayoutModel(ContentReference currentContentLink, RequestContext requestContext)
         {
-            var startPage = _contentLoader.Get<StartPage>(SiteDefinition.Current.StartPage);
-
-            //var companyPages = _contentLoader.GetChildren<PageData>(startPage.CompanyInformationPageLink)
-            //    .FilterForDisplay(requirePageTemplate: true)
-            //    .ToList();
-            //companyPages.Insert(0, _contentLoader.Get<PageData>(startPage.CompanyInformationPageLink));
+            var settings = _siteSettingsRepository.Get();
 
             return new LayoutModel
                 {
-                    Logotype = startPage.SiteLogotype,
+                    Logotype = settings.SiteLogotype,
                     LogotypeLinkUrl = new MvcHtmlString(_urlResolver.GetUrl(SiteDefinition.Current.StartPage)),
-                    ProductPages = startPage.ProductPageLinks,
-                    CompanyInformationPages = startPage.CompanyInformationPageLinks,
-                    NewsPages = startPage.NewsPageLinks,
-                    CustomerZonePages = startPage.CustomerZonePageLinks,
+                    ProductPages = settings.ProductPageLinks,
+                    CompanyInformationPages = settings.CompanyInformationPageLinks,
+                    NewsPages = settings.NewsPageLinks,
+                    CustomerZonePages = settings.CustomerZonePageLinks,
                     LoggedIn = requestContext.HttpContext.User.Identity.IsAuthenticated,
                     LoginUrl = new MvcHtmlString(GetLoginUrl(currentContentLink)),
-                    SearchPageRouteValues = requestContext.GetPageRoute(startPage.SearchPageLink)
+                    SearchPageRouteValues = requestContext.GetPageRoute(settings.SearchPageLink)
                 };
         }
 

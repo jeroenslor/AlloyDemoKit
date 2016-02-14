@@ -74,6 +74,10 @@
       <HintPath>..\packages\EPi.Cms.DateContainers.1.0.0.0\lib\net461\EPi.Cms.DateContainers.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EPi.Cms.SiteSettings, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPi.Cms.SiteSettings.1.0.0.0\lib\net461\EPi.Cms.SiteSettings.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EPi.CmsLocalizationProvider, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\EPi.CmsLocalizationProvider.1.0.0.0\lib\net461\EPi.CmsLocalizationProvider.dll</HintPath>
       <Private>True</Private>
@@ -502,6 +506,7 @@
     <Compile Include="Helpers\CategorizableExtensions.cs" />
     <Compile Include="Helpers\GeoPosition.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Helpers\ISiteSettingsRepositoryExtensions.cs" />
     <Compile Include="Helpers\UrlHelpers.cs" />
     <Compile Include="Models\Blocks\BlogArchiveBlock.cs" />
     <Compile Include="Models\Blocks\BlogListBlock.cs" />
@@ -524,6 +529,7 @@
     <Compile Include="Models\Blocks\TwitterBlock.cs" />
     <Compile Include="Models\Blocks\WeatherBlock.cs" />
     <Compile Include="Models\Blocks\YouTubeBlock.cs" />
+    <Compile Include="Models\IAlloySiteSettings.cs" />
     <Compile Include="Models\Media\GenericMedia.cs" />
     <Compile Include="Models\Media\IFileProperties.cs" />
     <Compile Include="Models\Media\ImageFile.cs" />
