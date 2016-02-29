@@ -1,3 +1,5 @@
+using System;
+using System.Configuration;
 using System.Web.Mvc;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
@@ -8,6 +10,9 @@ using EPiServer.Web.Mvc;
 using EPiServer.Web.Mvc.Html;
 using StructureMap;
 using AlloyDemoKit.Business.Data;
+using Elasticsearch.Net;
+using EPi.Cms.Search.Elasticsearch.Indexing;
+using Nest;
 
 namespace AlloyDemoKit.Business.Initialization
 {
@@ -30,6 +35,13 @@ namespace AlloyDemoKit.Business.Initialization
 
             //Implementations for custom interfaces can be registered here.
             container.For<IFileDataImporter>().Use<FileDataImporter>();
+
+            //Elastic search client
+            var node = new Uri(ConfigurationManager.ConnectionStrings["ElasticSearch"].ConnectionString);
+            var connectionPool = new SniffingConnectionPool(new[] { node });
+            var connectionSettings = new ConnectionSettings(connectionPool);
+
+            container.For<IElasticClient>().Use(new ElasticClient(connectionSettings));
         }
 
         public void Initialize(InitializationEngine context)

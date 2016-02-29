@@ -60,6 +60,10 @@
       <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Elasticsearch.Net, Version=2.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elasticsearch.Net.2.0.2\lib\net46\Elasticsearch.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -122,32 +126,32 @@
       <HintPath>..\packages\EPiServer.Framework.9.6.1\lib\net45\EPiServer.Events.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EPiServer.Find, Version=11.0.0.3701, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\packages\EPiServer.Find.11.0.0.3701\lib\net45\EPiServer.Find.dll</HintPath>
+    <Reference Include="EPiServer.Find, Version=11.1.1.4013, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Find.11.1.1.4013\lib\net45\EPiServer.Find.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EPiServer.Find.Blocks, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\packages\EPiServer.Find.Cms.11.0.0.3701\lib\net45\EPiServer.Find.Blocks.dll</HintPath>
+      <HintPath>..\packages\EPiServer.Find.Cms.11.1.1.4013\lib\net45\EPiServer.Find.Blocks.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EPiServer.Find.Cms, Version=11.0.0.3701, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\packages\EPiServer.Find.Cms.11.0.0.3701\lib\net45\EPiServer.Find.Cms.dll</HintPath>
+    <Reference Include="EPiServer.Find.Cms, Version=11.1.1.4013, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Find.Cms.11.1.1.4013\lib\net45\EPiServer.Find.Cms.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EPiServer.Find.Framework, Version=11.0.0.3701, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\packages\EPiServer.Find.Framework.11.0.0.3701\lib\net45\EPiServer.Find.Framework.dll</HintPath>
+    <Reference Include="EPiServer.Find.Framework, Version=11.1.1.4013, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Find.Framework.11.1.1.4013\lib\net45\EPiServer.Find.Framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EPiServer.Find.Optimizations, Version=11.0.0.3701, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\packages\EPiServer.Find.Cms.11.0.0.3701\lib\net45\EPiServer.Find.Optimizations.dll</HintPath>
+    <Reference Include="EPiServer.Find.Optimizations, Version=11.1.1.4013, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Find.Cms.11.1.1.4013\lib\net45\EPiServer.Find.Optimizations.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EPiServer.Find.Statistics, Version=11.0.0.3701, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\packages\EPiServer.Find.Cms.11.0.0.3701\lib\net45\EPiServer.Find.Statistics.dll</HintPath>
+    <Reference Include="EPiServer.Find.Statistics, Version=11.1.1.4013, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Find.Cms.11.1.1.4013\lib\net45\EPiServer.Find.Statistics.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EPiServer.Find.UI, Version=11.0.0.3701, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\packages\EPiServer.Find.Cms.11.0.0.3701\lib\net45\EPiServer.Find.UI.dll</HintPath>
+    <Reference Include="EPiServer.Find.UI, Version=11.1.1.4013, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Find.Cms.11.1.1.4013\lib\net45\EPiServer.Find.UI.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EPiServer.Forms, Version=0.21.1.9000, Culture=neutral, processorArchitecture=MSIL">
@@ -285,8 +289,12 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Nest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\NEST.2.0.2\lib\net46\Nest.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NHunspell">
@@ -487,6 +495,7 @@
     <Compile Include="Controllers\EmployeeExpertiseController.cs" />
     <Compile Include="Controllers\EmployeeLocationPageController.cs" />
     <Compile Include="Controllers\EmployeeSearchPageController.cs" />
+    <Compile Include="Controllers\ElasticSearchPageController.cs" />
     <Compile Include="Controllers\FindPageController.cs" />
     <Compile Include="Controllers\ImageFileController.cs" />
     <Compile Include="Controllers\PageControllerBase.cs" />
@@ -550,6 +559,7 @@
     <Compile Include="Models\Pages\LocationPage.cs" />
     <Compile Include="Models\Pages\NewsPage.cs" />
     <Compile Include="Models\Pages\ProductPage.cs" />
+    <Compile Include="Models\Pages\ElasticSearchPage.cs" />
     <Compile Include="Models\Pages\SearchPage.cs" />
     <Compile Include="Models\Pages\SitePageData.cs" />
     <Compile Include="Models\Pages\StandardPage.cs" />
@@ -580,6 +590,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\EPi.Cms.Search.Elasticsearch\src\EPi.Cms.Search.Elasticsearch\EPi.Cms.Search.Elasticsearch.csproj">
+      <Project>{7b080504-b422-4855-8ee7-9b1cfe68e3e7}</Project>
+      <Name>EPi.Cms.Search.Elasticsearch</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WeatherService\WeatherService.csproj">
       <Project>{847fda30-8ec3-48cd-b82b-d7fc4bd54621}</Project>
       <Name>WeatherService</Name>
