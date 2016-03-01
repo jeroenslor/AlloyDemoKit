@@ -28,7 +28,7 @@ namespace AlloyDemoKit.Models.Pages
 
         public bool ShouldIndex() => true;
 
-        public TypeName TypeName => TypeName.From<ArticlePage>();
+        public TypeName TypeName => TypeName.From<ArticlePageIndexModel>();
 
         public ITypeMapping CreateTypeMapping(CultureInfo cultureInfo)
         {
@@ -36,6 +36,7 @@ namespace AlloyDemoKit.Models.Pages
         }
     }
 
+    [ElasticsearchType(Name = "articles")]
     public class ArticlePageIndexModel : IPageDataIndexModel
     {
         public Guid Id { get; set; }
