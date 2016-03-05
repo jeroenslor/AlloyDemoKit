@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using EPi.Cms.Search.Elasticsearch.Indexing;
+using EPi.Cms.Search.Elasticsearch.Indexing.TypeMap;
 using Nest;
 
 namespace AlloyDemoKit.Models.Pages
@@ -12,7 +13,7 @@ namespace AlloyDemoKit.Models.Pages
         GroupName = Global.GroupNames.News,
         GUID = "AEECADF2-3E89-4117-ADEB-F8D43565D2F4")]
     [SiteImageUrl(Global.StaticGraphicsFolderPath + "page-type-thumbnail-article.png")]
-    public class ArticlePage : StandardPage, IIndexablePageData
+    public class ArticlePage : StandardPage, IIndexablePageData, IIndexableTypeMapper
     {
         public IPageDataIndexModel CreateIndexModel()
         {
@@ -21,9 +22,9 @@ namespace AlloyDemoKit.Models.Pages
 
             indexModel.Name = Name;
             indexModel.MetaDescription = MetaDescription;
-            indexModel.MainBody = MainBody.StripHtml();
+            indexModel.MainBody = MainBody?.StripHtml();
 
-            return indexModel;           
+            return indexModel;
         }
 
         public bool ShouldIndex() => true;
@@ -32,7 +33,7 @@ namespace AlloyDemoKit.Models.Pages
 
         public ITypeMapping CreateTypeMapping(CultureInfo cultureInfo)
         {
-            return new TypeMappingDescriptor<ArticlePage>().AutoMap();
+            return new TypeMappingDescriptor<ArticlePageIndexModel>().AutoMap();
         }
     }
 
