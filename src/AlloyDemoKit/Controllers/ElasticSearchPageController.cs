@@ -1,37 +1,59 @@
-﻿using EPiServer.Find;
-using EPiServer.Find.UnifiedSearch;
-using AlloyDemoKit.Models.Pages;
+﻿using AlloyDemoKit.Models.Pages;
 using System.Web.Mvc;
 using AlloyDemoKit.Models.ViewModels;
-using EPiServer.Find.Framework.Statistics;
-using EPiServer.Find.UI;
+using EPi.Cms.Search.Elasticsearch.Indexing;
+using EPiServer.Find.Helpers;
 using EPiServer.Globalization;
+using Nest;
+using SiteDefinition = EPiServer.Web.SiteDefinition;
 
 namespace AlloyDemoKit.Controllers
 {
     public class ElasticSearchPageController :  PageControllerBase<ElasticSearchPage>
     {
         private const int MaxResults = 1000;
-        private readonly IClient _searchClient;
-        private readonly IFindUIConfiguration _findUIConfiguration;     
+        private readonly IElasticClient _searchClient;
 
         public ElasticSearchPageController(
-            IClient searchClient, 
-            IFindUIConfiguration findUIConfiguration)
+            IElasticClient searchClient)
         {
             _searchClient = searchClient;
-            _findUIConfiguration = findUIConfiguration;
         }
 
         [ValidateInput(false)]
-        public ViewResult Index(FindPage currentPage, string q)
+        public ViewResult Index(ElasticSearchPage currentPage, string q)
         {
-            var model = new FindSearchContentModel(currentPage)
-                {
-                    PublicProxyPath = _findUIConfiguration.AbsolutePublicProxyPath()
-                };
+            var model = new ElasticSearchContentModel(currentPage);
 
-            if (!string.IsNullOrWhiteSpace(model.Query))
+            var searchResponse = _searchClient
+                .Search<IPageDataIndexModel>(s =>
+                    s.Index($"site_{ContentLanguage.PreferredCulture.Name}")
+                    .Type(Types.Type(typeof(ArticlePageIndexModel), typeof(NewsPageIndexModel)))
+                        .Query(qy =>
+                            qy.Bool(b =>
+                            {
+                                if (!string.IsNullOrWhiteSpace(model.Query))
+                                {
+                                    b.Should(sh =>
+                                        sh.Match(m => m.Field("name")),
+                                        sh => sh.Match(m => m.Field("meta_description")),
+                                        sh => sh.Match(m => m.Field("main_body")));
+                                }
+
+                                b.Filter(f =>
+                                    f.Term("site_definition_id", SiteDefinition.Current.Id));
+                                return b;
+                            }
+                                )
+                        )
+                        .From((model.PagingPage - 1) * model.CurrentPage.PageSize)
+                        .Size(model.CurrentPage.PageSize)                    
+                );
+
+            model.Hits = searchResponse.Hits;
+            model.NumberOfHits = searchResponse.Total;
+
+            /*if (!string.IsNullOrWhiteSpace(model.Query))
             {
                 var query =
                     _searchClient.UnifiedSearchFor(model.Query, _searchClient.Settings.Languages.GetSupportedLanguage(ContentLanguage.PreferredCulture) ??
@@ -77,7 +99,7 @@ namespace AlloyDemoKit.Controllers
                 //Execute the query and populate the Result property which the markup (aspx)
                 //will render.
                 model.Hits = query.GetResult(hitSpec);
-            }
+            }*/
            
             return View(model);
         }

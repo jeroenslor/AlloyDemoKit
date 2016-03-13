@@ -40,6 +40,7 @@ namespace AlloyDemoKit.Business.Initialization
             var node = new Uri(ConfigurationManager.ConnectionStrings["ElasticSearch"].ConnectionString);
             var connectionPool = new SniffingConnectionPool(new[] { node });
             var connectionSettings = new ConnectionSettings(connectionPool);
+            connectionSettings.DisableDirectStreaming();
 
             container.For<IElasticClient>().Use(new ElasticClient(connectionSettings));
         }

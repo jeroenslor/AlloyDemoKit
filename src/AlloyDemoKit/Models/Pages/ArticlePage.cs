@@ -41,10 +41,14 @@ namespace AlloyDemoKit.Models.Pages
     public class ArticlePageIndexModel : IPageDataIndexModel
     {
         public Guid Id { get; set; }
+        [String(Name = "content_reference", Index = FieldIndexOption.NotAnalyzed)]
         public string ContentReference { get; set; }
+        [String(Name = "site_definition_id", Index = FieldIndexOption.NotAnalyzed)]
         public Guid? SiteDefinitionId { get; set; }
         public string Name { get; set; }
+        [String(Name = "meta_description")]
         public string MetaDescription { get; set; }
+        [String(Name = "main_body")]
         public string MainBody { get; set; }
     }
 }

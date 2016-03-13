@@ -574,6 +574,7 @@
     <Compile Include="Models\ViewModels\ContactBlockModel.cs" />
     <Compile Include="Models\ViewModels\ContentRenderingErrorModel.cs" />
     <Compile Include="Models\ViewModels\EmployeeSearchContentModel.cs" />
+    <Compile Include="Models\ViewModels\ElasticSearchContentModel.cs" />
     <Compile Include="Models\ViewModels\ImageViewModel.cs" />
     <Compile Include="Models\ViewModels\IPageViewModel.cs" />
     <Compile Include="Models\ViewModels\LayoutModel.cs" />
@@ -593,6 +594,10 @@
     <ProjectReference Include="..\..\..\EPi.Cms.Search.Elasticsearch\src\EPi.Cms.Search.Elasticsearch\EPi.Cms.Search.Elasticsearch.csproj">
       <Project>{7b080504-b422-4855-8ee7-9b1cfe68e3e7}</Project>
       <Name>EPi.Cms.Search.Elasticsearch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EPi.Cms.Social.Twitter\EPi.Cms.Social.Twitter.csproj">
+      <Project>{4fd2f66f-89ad-4ef4-8d1d-a651e1a13588}</Project>
+      <Name>EPi.Cms.Social.Twitter</Name>
     </ProjectReference>
     <ProjectReference Include="..\WeatherService\WeatherService.csproj">
       <Project>{847fda30-8ec3-48cd-b82b-d7fc4bd54621}</Project>
@@ -1410,6 +1415,7 @@
     <Content Include="Views\VisitorGroupUsage\Index.cshtml" />
     <Content Include="Views\Shared\Blocks\WeatherDisplay.cshtml" />
     <Content Include="Views\Shared\LanguageSelector.cshtml" />
+    <Content Include="Views\ElasticSearchPage\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
