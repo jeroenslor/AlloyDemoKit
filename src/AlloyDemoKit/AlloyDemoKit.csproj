@@ -506,6 +506,7 @@
     <Compile Include="Controllers\SearchPageController.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
     <Compile Include="Controllers\TagCloudBlockController.cs" />
+    <Compile Include="Controllers\TwitterUserTimelineBlockController.cs" />
     <Compile Include="Controllers\VideoFileController.cs" />
     <Compile Include="Controllers\WeatherBlockController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1416,6 +1417,7 @@
     <Content Include="Views\Shared\Blocks\WeatherDisplay.cshtml" />
     <Content Include="Views\Shared\LanguageSelector.cshtml" />
     <Content Include="Views\ElasticSearchPage\Index.cshtml" />
+    <Content Include="Views\TwitterUserTimelineBlock\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

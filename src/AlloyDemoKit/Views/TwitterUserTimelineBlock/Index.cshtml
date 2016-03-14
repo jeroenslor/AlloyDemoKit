@@ -1,0 +1,8 @@
+﻿@model AlloyDemoKit.Controllers.TwitterUserTimeLineViewModel
+
+<h2>@Model.Heading</h2>
+
+@foreach (var status in Model.TwitterStatuses)
+{
+    @status.Id
+}

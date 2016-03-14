@@ -151,6 +151,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ITwitterService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TwitterService.cs" />
     <Compile Include="TwitterUserTimelineBlock.cs" />

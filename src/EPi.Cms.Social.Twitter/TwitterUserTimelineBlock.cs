@@ -10,6 +10,14 @@ namespace EPi.Cms.Social.Twitter
     {
         [Required]
         [Display(
+            Name = "Heading",
+            Description = "The heading of the block",
+            GroupName = SystemTabNames.Content,
+            Order = 0)]
+        public virtual string Heading { get; set; }
+
+        [Required]
+        [Display(
             Name = "Screen name",
             Description = "The screen name of the user",
             GroupName = SystemTabNames.Content,

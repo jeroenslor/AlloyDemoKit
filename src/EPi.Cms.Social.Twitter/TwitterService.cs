@@ -8,11 +8,13 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EPiServer;
 using EPiServer.Framework.Cache;
+using EPiServer.ServiceLocation;
 using Newtonsoft.Json;
 
 namespace EPi.Cms.Social.Twitter
 {
-    public class TwitterService
+    [ServiceConfiguration(typeof(ITwitterService))]
+    public class TwitterService : ITwitterService
     {
         private readonly ISynchronizedObjectInstanceCache _cacheManager;
         private const string OAuthUrl = "https://api.twitter.com/oauth2/token";
@@ -23,7 +25,7 @@ namespace EPi.Cms.Social.Twitter
             _cacheManager = cacheManager;
         }
 
-        public async Task<TwitterStatus[]> GetUserTimeLineStatuses(string consumerKey, string consumerSecret, string screenName, int count, bool excludeReplies = true, bool includeRetweets = false, bool cache = false, TimeSpan? cacheExpiration = null)
+        public async Task<TwitterStatus[]> GetUserTimeLineStatusesAsync(string consumerKey, string consumerSecret, string screenName, int count, bool excludeReplies = true, bool includeRetweets = false, bool cache = false, TimeSpan? cacheExpiration = null)
         {
             if (cache)
             {

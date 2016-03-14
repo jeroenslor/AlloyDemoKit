@@ -11,7 +11,7 @@ namespace EPi.Cms.Social.Twitter.Tests
             var twitterService = new TwitterService(null);
             var statuses =
                 await
-                    twitterService.GetUserTimeLineStatuses("a6tKq5Fj6dCLcn5kfOaYq8p8r",
+                    twitterService.GetUserTimeLineStatusesAsync("a6tKq5Fj6dCLcn5kfOaYq8p8r",
                         "SWSrMphHurGtY2hFraL1jc38949eBIkaGjTocpg4oFcKcM65O6", "jeroenslor",100);
 
             Assert.NotEqual(0, statuses.Length);
